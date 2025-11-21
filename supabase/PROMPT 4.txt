@@ -1,0 +1,225 @@
+📄 PROMPT 04 – Mejorar legibilidad del “Control de apertura” (OpeningModal glassmorphism)
+
+Guárdalo como:
+prompt_04_opening_modal_legible.txt
+
+Rol
+
+Eres TRAE, un asistente de programación especializado en UI/UX con React + TypeScript. Tu objetivo es ajustar el diseño del modal de “Control de apertura” (OpeningModal) dentro del POS para mejorar su legibilidad, manteniendo el estilo futurista/glassmorphism ya aplicado al resto del proyecto. No debes modificar la lógica ni el flujo de la aplicación, solo la apariencia (estilos, opacidades, colores, sombras).
+
+Contexto
+
+El proyecto es un POS de verdulería con un diseño reciente de estética futurista (fondos oscuros degradados, glassmorphism, gradientes, glow suave).
+Actualmente:
+
+Al iniciar sesión y entrar al POS, aparece un modal de “Control de apertura” (apertura de caja).
+
+Este modal se muestra sobre el POS, con el fondo desenfocado (blur).
+
+Sin embargo, el modal es demasiado transparente:
+
+El contenido del POS se ve demasiado a través del modal.
+
+Los textos, inputs y botones del modal se mezclan visualmente con el fondo.
+
+El usuario no distingue bien los campos de “Caja de apertura” y “Nota de apertura”.
+
+Queremos que el modal se vea como un panel principal, claro y legible, sin perder el look glassmorphism ni el blur de fondo.
+
+Tarea principal
+
+Rediseñar exclusivamente la apariencia visual del modal de “Control de apertura” para:
+
+Aumentar la opacidad/contraste de la tarjeta del modal.
+
+Oscurecer ligeramente el overlay de fondo para que el modal destaque.
+
+Mejorar la legibilidad de textos, inputs y botones.
+
+Mantener el estilo futurista coherente con el login y el POS.
+
+Sin tocar la lógica de:
+
+Estados.
+
+Callbacks (onOpenRegister, onDiscard, etc.).
+
+Apertura/cierre del modal.
+
+Qué debes hacer (detallado)
+
+Identificar el componente del modal
+
+Localiza el componente que corresponde al “Control de apertura” (por ejemplo OpeningModal o nombre similar).
+
+Revisa:
+
+El contenedor externo del overlay (fondo que oscurece y desenfoca el POS).
+
+El contenedor interno de la tarjeta del modal (donde están el título, inputs y botones).
+
+Ajustar el overlay de fondo
+
+Mantén el efecto de blur sobre el POS para que se vea desenfocado.
+
+Aumenta la opacidad de la capa oscura entre el POS y el modal:
+
+Usa un color oscuro semi-transparente (por ejemplo un negro o azul muy oscuro con mayor opacidad).
+
+El objetivo es que el fondo del POS se perciba, pero no distraiga ni compita con el texto del modal.
+
+Evita que el overlay sea tan transparente que “se pierda” el modal.
+
+Refinar la tarjeta del modal (glassmorphism más sólido)
+
+Mantén el estilo glass (ligero blur, bordes redondeados, sombra), pero:
+
+Aumenta la opacidad del fondo de la tarjeta.
+
+Usa un color de base más oscuro (ej. un gris/azul muy oscuro con transparencia moderada).
+
+Asegúrate de que el texto blanco o claro se lea perfectamente sobre ese fondo.
+
+Mejora la jerarquía visual:
+
+Título (“Control de apertura”) con tipografía más grande y peso semibold/bold.
+
+Subtítulos/labels con tamaño legible y buen contraste.
+
+Mejorar inputs dentro del modal
+
+Inputs de “Caja de apertura” y “Nota de apertura”:
+
+Fondo más sólido (oscuro, ligero glass).
+
+Borde con color visible (ej. línea violeta/azulada fina).
+
+Al enfocar (focus), mostrar:
+
+Borde resaltado (color de acento).
+
+Glow muy sutil alrededor.
+
+Placeholders:
+
+Texto de placeholder en un gris claro que se lea bien, pero diferenciado del texto real.
+
+Optimizar botones del modal
+
+Botón de “Abrir caja registradora”:
+
+Mantener estilo de botón principal futurista:
+
+Gradiente azul–morado–cian.
+
+Tipografía clara y legible.
+
+Hover con ligero aumento de brillo o sombra.
+
+Botón de “Descartar”:
+
+Estilo secundario:
+
+Fondo más discreto (oscuro translúcido o borde solo).
+
+Mantener buena legibilidad del texto.
+
+Asegúrate de que exista suficiente contraste entre ambos botones para entender cuál es la acción principal.
+
+Cuidar la composición y el centrado del modal
+
+El modal debe:
+
+Estar centrado visualmente en la pantalla.
+
+Tener padding interno suficiente para que todo “respire”.
+
+No ser tan ancho como para perder la sensación de tarjeta; mantener un ancho moderado adecuado.
+
+No modificar la lógica
+
+No cambies:
+
+Props del componente.
+
+Nombres de funciones.
+
+Manejo de estados.
+
+Solo trabaja la capa de estilos (clases, estilos inline, combinación de ambos) y, si es necesario, la estructura del JSX sin alterar el comportamiento.
+
+Verificación visual y funcional
+
+Ejecuta el proyecto.
+
+Inicia sesión para llegar al POS.
+
+Deja que el modal de Control de apertura se muestre.
+
+Verifica:
+
+Que el fondo del POS esté desenfocado pero discretamente oscurecido.
+
+Que la tarjeta del modal se lea claramente, con texto nítido.
+
+Que los campos de entrada sean fáciles de ver y usar.
+
+Que los botones sean distinguibles y que la acción principal destaque.
+
+Confirma que el modal sigue abriéndose y cerrándose igual que antes, con la misma lógica.
+
+Cómo debe quedar al final (resultado esperado)
+
+Al finalizar:
+
+El modal de “Control de apertura” será claramente legible:
+
+La tarjeta tendrá suficiente opacidad para que los elementos del POS no molesten visualmente.
+
+Los textos e inputs tendrán contraste adecuado.
+
+El overlay de fondo:
+
+Mantendrá el blur futurista.
+
+Estará un poco más oscuro, para ayudar a enfocar la vista en el modal.
+
+El diseño seguirá completamente alineado con:
+
+El login futurista.
+
+El resto del POS rediseñado.
+
+El comportamiento del modal:
+
+No habrá cambiado nada a nivel funcional.
+
+Solo se habrá mejorado la experiencia visual.
+
+Documentación .txt
+
+Al terminar estos cambios, crea o actualiza un archivo de texto, por ejemplo:
+
+docs/trae_opening_modal_legible_log.txt
+
+Incluye:
+
+Fecha y hora aproximada de los cambios.
+
+Componente(s) exacto(s) donde tocaste estilos del modal.
+
+Descripción del problema original (modal demasiado transparente, fondo competitivo visualmente).
+
+Descripción de los ajustes aplicados:
+
+Overlay.
+
+Fondo de tarjeta.
+
+Inputs.
+
+Botones.
+
+Confirmación de que no se modificó la lógica ni los callbacks del modal.
+
+Resultado final y cómo se valida visualmente (pasos para reproducir la vista del modal).

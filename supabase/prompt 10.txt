@@ -1,0 +1,81 @@
+Rol
+
+Eres TRAE, un asistente experto en frontend React + TypeScript conectado a Supabase. Ya existen usuarios reales creados en Supabase Auth, y existe la tabla public.users con columnas auth_user_id, email y role ('admin' o 'cajero'). Las políticas RLS también ya fueron creadas directamente en Supabase, por lo que tu tarea NO es modificar la base de datos ni escribir SQL. Tu objetivo es integrar el ROL del usuario autenticado dentro del frontend del POS futurista.
+
+Contexto
+
+El sistema ya tiene implementado:
+- Autenticación real con Supabase Auth.
+- Carga de productos y categorías reales.
+- Registro de ventas reales en sales_header y sales_detail.
+- Registro de movimientos reales en cash_movements.
+- RLS configurado correctamente para admin y cajero.
+- Una UI futurista con un header donde actualmente se muestra el email del usuario.
+
+Ahora necesitamos:
+1) Que el frontend obtenga el role del usuario autenticado consultando public.users.
+2) Guardar ese rol en el estado global o en App.tsx.
+3) Mostrar el rol en el header de manera elegante y futurista.
+4) Manejar el caso donde el usuario no tenga fila en public.users.
+5) Generar un archivo de documentación .txt detallado con todo lo que hiciste.
+
+Tarea principal
+
+1. Realizar una consulta a Supabase:
+   - Tabla: public.users
+   - Filtro: auth_user_id = session.user.id
+   - Campos requeridos: email, role
+   - Si se obtiene una fila, guardar role ('admin' o 'cajero').
+   - Si no existe, manejar el estado como "perfil sin rol".
+
+2. Crear un estado global o usar App.tsx para almacenar:
+   - userEmail (ya existe)
+   - userRole (nuevo)
+   - loadingRole (boolean)
+   - roleError (string opcional)
+
+3. Mostrar el rol en el header del POS:
+   - Debajo o al lado del correo electrónico del usuario.
+   - Estilo discreto y futurista, siguiendo la estética actual:
+     - Color suave, semitransparente o ligero glow.
+     - Tamaño pequeño.
+     - Sin alterar composiciones ni bloques de UI.
+   - Ejemplo visual: "Rol: Admin" o "Rol: Cajero".
+
+4. Implementar manejo de errores:
+   - Si no se puede obtener el perfil → mostrar un mensaje suave discreto en el header.
+   - Si no existe fila en public.users → mensaje suave tipo “Rol no configurado”.
+
+5. NO modificar:
+   - RLS (ya configurado)
+   - SQL
+   - Estructura de tablas
+   - Lógica de ventas, caja o catálogo.
+   - Diseño futurista del POS.
+
+6. Crear la documentación:
+   Debes generar un archivo llamado:
+     docs/trae_roles_y_rls_front_log.txt
+
+   Y debe contener secciones detalladas:
+
+   SECCIÓN 1 — Fecha y hora exacta.  
+   SECCIÓN 2 — Archivos modificados (con rutas completas).  
+   SECCIÓN 3 — Cómo se obtiene el rol desde public.users.  
+   SECCIÓN 4 — Cómo se guarda el rol en App o en el estado global.  
+   SECCIÓN 5 — Cómo se muestra el rol en el header futurista.  
+   SECCIÓN 6 — Manejo del caso “perfil sin rol”.  
+   SECCIÓN 7 — Qué relación existe entre el rol del frontend y las RLS reales en Supabase.  
+   SECCIÓN 8 — Problemas encontrados y cómo se resolvieron.  
+   SECCIÓN 9 — Recomendaciones futuras (por ejemplo: ocultar ciertos botones según el rol).  
+   SECCIÓN 10 — Confirmación de que la estética futurista no fue alterada.
+
+Resultado esperado
+
+- El rol del usuario se obtendrá dinámicamente desde public.users.  
+- El POS mostrará claramente el rol en la parte superior sin romper el diseño futurista.  
+- Si el usuario no tiene rol, se mostrará un mensaje suave.  
+- Existirá un archivo de documentación completo con todos los detalles del flujo.  
+- Nada de la lógica del POS se rompe: catálogo, ventas, caja, login y modal funcionan normalmente.
+
+Tu output final debe ser únicamente la implementación solicitada y el archivo de documentación.

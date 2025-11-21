@@ -1,0 +1,130 @@
+Rol
+
+Eres TRAE, un asistente de programación especializado en conectar frontends avanzados con bases de datos Supabase. Ya implementaste ventas reales en sales_header y sales_detail. Ahora debes implementar el registro REAL de movimientos de caja utilizando la tabla public.cash_movements, manteniendo la UI futurista sin modificar el diseño visual.
+
+Contexto
+
+El POS ya contiene:
+- Autenticación real con Supabase.
+- Catálogo real desde Supabase.
+- Ventas reales registradas correctamente.
+- Un modal futurista llamado OpeningModal (Control de apertura).
+- Buttons y componentes en el POS para registrar acciones.
+
+La base de datos ya tiene esta estructura:
+
+cash_movements:
+- id (bigserial)
+- user_id (uuid)
+- type (text: 'apertura','ingreso','salida','cierre')
+- amount (numeric)
+- note (text)
+- created_at (timestamp)
+
+Tarea principal
+
+Implementar la integración real con Supabase en los distintos flujos de movimiento de caja:
+
+1) Abertura de caja (modal)
+   - type = 'apertura'
+   - amount = monto ingresado en el modal
+   - note = texto ingresado
+   - user_id = session.user.id
+   - created_at = automático
+
+2) Registrar ingreso de caja
+   - Crear función para movimientos de tipo 'ingreso'.
+   - amount > 0
+   - note obligatorio o breve descripción.
+
+3) Registrar salida de caja
+   - Igual a ingreso pero type = 'salida'.
+
+4) Cierre de caja
+   - type = 'cierre'
+   - amount = monto final de caja (puede usar suma del sistema o input)
+   - note = texto opcional para cierre.
+
+5) Manejo de errores visual:
+   - Mostrar texto futurista en rojo si Supabase retorna error.
+   - No romper el diseño ni cambiar colores globales.
+
+6) Mensajes de éxito:
+   - “Movimiento registrado” (verde suave).
+   - Cerrar modal si aplica.
+
+7) Mantener la UI futurista:
+   - No cambiar estilos.
+   - Solo añadir lógica a OpeningModal y/o DashboardLayout según sea necesario.
+
+Qué debes hacer (detallado)
+
+1. Localizar:
+   - OpeningModal (para apertura)
+   - Componentes donde existan botones o flujos para ingreso, salida o cierre
+
+2. Importar supabase y session.user.id igual que en ventas.
+
+3. Crear funciones:
+   - handleOpenRegister()
+   - handleCashIncome()
+   - handleCashOutcome()
+   - handleCashClose()
+
+4. Cada función debe insertar:
+   supabase.from("cash_movements").insert({
+     user_id,
+     type,
+     amount,
+     note
+   })
+
+5. Controlar estados:
+   - loading: desactivar botones
+   - error: mensaje rojo suave
+   - success: mensaje verde suave
+
+6. Validación:
+   - amount debe ser numérico y > 0 para ingreso/salida
+   - note opcional excepto ingreso/salida (puede ser mínimo 2 caracteres)
+   - Para apertura/cierre, permitir montos 0 si así lo requiere el negocio
+
+7. Mantener diseño:
+   - No modificar clases CSS
+   - No cambiar gradientes
+   - No cambiar glassmorphism
+   - Solo integrar lógica de datos
+
+8. Validar con datos reales:
+   - Registrar una apertura → verificar en Supabase Studio
+   - Registrar ingresos → verificar en Supabase Studio
+   - Registrar salidas → verificar en Supabase Studio
+   - Registrar cierre → verificar en Supabase Studio
+
+Documentación requerida (.txt)
+
+Generar:
+docs/trae_cash_movements_log.txt
+
+Debe incluir:
+
+SECCIÓN 1 — Fecha y hora exacta  
+SECCIÓN 2 — Archivos modificados  
+SECCIÓN 3 — Explicación del flujo completo para cada tipo de movimiento  
+SECCIÓN 4 — Validaciones aplicadas  
+SECCIÓN 5 — Manejo de sesión  
+SECCIÓN 6 — Manejo de errores reales  
+SECCIÓN 7 — Pruebas realizadas con capturas de output  
+SECCIÓN 8 — Descripción técnica amplia de la implementación  
+SECCIÓN 9 — Problemas detectados y cómo se resolvieron  
+SECCIÓN 10 — Confirmación de que todo se ve futurista y sin alterar diseño.  
+
+Resultado esperado
+
+Después de este prompt:
+- El modal de apertura registrará apertura real en cash_movements.
+- Podrás registrar ingresos y salidas reales.
+- Podrás registrar cierres reales.
+- Los movimientos se verán inmediatamente en Supabase Studio.
+- Toda la UI futurista seguirá intacta.
+

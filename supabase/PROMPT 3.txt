@@ -1,0 +1,234 @@
+✅ Próximo paso: PROMPT 03
+Rediseño Completo Estilo FUTURISTA para todo el POS (DashboardLayout, tarjetas de productos, header, categorías, carrito, teclas, etc.)
+Sin modificar la lógica, solo UI.
+
+Este prompt hace que TRAE actualice toda la UI, pero conservando la estructura del código.
+
+Te lo dejo listo para pegar en un .txt:
+
+📄 PROMPT 03 – Rediseño Futurista GLOBAL del POS (UI completa)
+
+Rol
+
+Eres TRAE, un asistente de programación enfocado en rediseño UI profesional con React + TypeScript. Tu tarea es transformar toda la interfaz del POS en un diseño futurista consistente con el nuevo Login ya implementado: dark mode, glassmorphism, gradientes azul–morado, altos contrastes elegantes, bordes suaves, sombras profundas, íconos minimalistas y una experiencia visual moderna. No modificarás lógica ni comportamiento: solo estilos.
+
+Contexto
+
+Este proyecto es un POS visual construido en React + TypeScript con múltiples componentes dentro de la carpeta components/.
+Actualmente:
+
+El login ya tiene un diseño futurista con:
+
+Fondo azul–morado con degradado.
+
+Tarjeta de glassmorphism.
+
+Iconos suaves.
+
+Inputs y botones estilizados.
+
+El resto del proyecto (POS, DashboardLayout, ProductCard, categorías, carrito, keypad, etc.) sigue usando diseño claro clásico, lo cual genera inconsistencia visual.
+
+El objetivo es que todo el POS adopte la estética futurista del Login, sin romper su lógica actual.
+
+Tarea principal
+
+Actualizar todos los componentes visuales del POS para que coincidan con el estilo del login. Esto incluye:
+
+Fondo general del POS
+
+Header superior
+
+Sidebar izquierdo (carrito)
+
+Tarjetas de producto
+
+Selector de categorías
+
+Buscador
+
+KeyPad numérico
+
+Ventana de abrir caja (OpeningModal)
+
+Etiquetas de precios
+
+Botones de acción
+
+Indicadores de estado
+
+Tipografías, espaciados y sombras
+
+No modificarás:
+
+Lógica del carrito.
+
+Lógica del modal.
+
+Manejo de productos.
+
+Estados internos.
+
+Ni rutas.
+
+Solo UI.
+
+Qué debes hacer (detallado)
+
+Aplicar un fondo general dark gradient
+
+Usar un degradado muy suave tipo:
+
+#0e0e2e → #1a1c3b → #0c1324
+
+Mantener una iluminación mínima pero elegante.
+
+Debe verse moderno y profundo.
+
+Transformar el DashboardLayout en un contenedor futurista
+
+Glassmorphism suave (blur 10–25px).
+
+Bordes redondeados 16–24px.
+
+Sombra azul/morada muy sutil.
+
+Eliminar colores blancos puros.
+
+Cambiar todo gris claro por tonos azul oscuro semi-transparentes.
+
+Aplicar estilo futurista al header
+
+Fondo translúcido oscuro.
+
+Bordes inferiores lineales (1px) con glow violeta/azul.
+
+Íconos minimalistas de línea blanca/azulado.
+
+Botón “Cerrar sesión” → gradiente y borde sutil.
+
+Sidebar del carrito
+
+Fondo de tarjeta “glass”.
+
+Iconografía minimalista.
+
+Texto claro pero no blanco puro (por ejemplo #e4e9ff).
+
+Botones suaves y minimalistas.
+
+Espaciado limpio y moderno.
+
+Listado de productos / ProductCard
+
+Tarjetas ahora deben ser:
+
+Fondo translúcido.
+
+Glow suave al hover.
+
+Animación mínima de scale o shadow.
+
+Bordes redondeados 18–20px.
+
+El precio:
+
+Badge futurista (gradiente verde–azul).
+
+Tipografía bold moderna.
+
+La imagen:
+
+Mantener borde redondeado y mejorar contraste.
+
+Categorías
+
+Convertir cada categoría en un pill moderno:
+
+Bordes redondeados 20–30px.
+
+Fondo translúcido.
+
+Glow leve al seleccionar.
+
+Texto gris claro.
+
+Buscador
+
+Input con glassmorphism.
+
+Ícono de búsqueda minimalista blanco/azulado.
+
+Placeholder futurista.
+
+KeyPad numérico
+
+Botones circulares o redondeados.
+
+Fondo translúcido oscuro.
+
+Hover con glow azul/cian.
+
+Tipografía bold, futurista.
+
+Sin colores amarillos originales.
+
+OpeningModal (apertura de caja)
+
+Modal de estilo glass:
+
+Fondo translúcido oscuro.
+
+Blur.
+
+Sombras elegantes.
+
+Inputs futuristas.
+
+Botones con gradiente como en el Login.
+
+Pequeños detalles generales
+
+Aumentar consistencia de spacing (padding uniformes).
+
+Alinear tipografías a estilo moderno (semi-bold / medium).
+
+Reducir uso de colores saturados.
+
+Remover grises planos del diseño antiguo.
+
+Implementar suaves transiciones en hover.
+
+Cómo debe quedar al final
+
+El login y el POS deben sentirse parte de la misma plataforma moderna.
+
+Debe verse como un dashboard profesional futurista / UI premium.
+
+Debe mantenerse 100% funcional.
+
+No debe romperse ningún hook ni función.
+
+No debe cambiarse el flujo del carrito.
+
+Documentación requerida (.txt)
+
+Cuando termines, crea un archivo:
+
+docs/trae_redisenio_pos_futurista_log.txt
+
+Debe incluir:
+
+Fecha y hora del proceso.
+
+Lista de componentes modificados.
+
+Explicación del nuevo diseño general.
+
+Detalle de problemas encontrados y cómo se solucionaron.
+
+Confirmación de que no se modificó la lógica del POS.
+
+Explicación de cómo se aplicó glassmorphism + dark gradient + glow.
+
+Estado final del proyecto y verificación de que todo compila.

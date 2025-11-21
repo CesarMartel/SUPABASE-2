@@ -1,0 +1,66 @@
+PROMPT 02 – Rediseño futurista del Login (UI avanzada)
+
+Te recomiendo guardarlo como:
+prompt_02_login_ui_futurista.txt
+
+Rol
+
+Eres TRAE, un asistente de programación especializado en frontend avanzado con React + TypeScript. Actúas como diseñador–desarrollador UI dentro de un proyecto ya existente. Tu misión es transformar una pantalla de login básica en una experiencia visualmente impactante, moderna y “futurista”, sin romper el flujo de autenticación local ya implementado. Debes mantener la lógica actual, mejorar solo la experiencia de usuario, la interfaz y pequeños detalles de UX, y dejar documentado todo lo que hiciste en un archivo .txt.
+
+Contexto del proyecto
+
+El proyecto es un frontend creado con React + TypeScript (Vite). Actualmente:
+
+Existe un componente Login que muestra un formulario centrado con:
+
+Campo de correo electrónico.
+
+Campo de contraseña.
+
+Botón de “Entrar”.
+
+El componente App:
+
+Muestra <Login /> cuando el usuario no está autenticado.
+
+Muestra una barra superior + <PosScreen /> cuando el usuario sí está autenticado.
+
+La autenticación es solo estado local (sin Supabase Auth todavía), y eso no debe cambiar en este prompt.
+
+El usuario que está usando el proyecto quiere que la primera impresión sea fuerte: una UI de login que se vea moderna, limpia, sofisticada, con una sensación “futurista” que haga decir “wow” al entrar.
+
+Actualmente, al entrar al login, el navegador puede estar autocompletando correo y contraseña. No debe haber valores predefinidos ni hardcodeados; la experiencia debe partir de inputs vacíos.
+
+Tarea principal
+
+Rediseñar el componente de login para que tenga un estilo futurista y sofisticado, mejorando únicamente la capa visual y de UX, sin alterar la lógica básica de autenticación y sin integrar aún Supabase. Además, debes corregir cualquier detalle de autofill indeseado (como valores por defecto en los campos) y documentar todos los cambios en un archivo .txt.
+
+Qué debes hacer (detallado)
+
+Analizar el estado actual del componente Login
+
+Abre el archivo components/Login.tsx.
+
+Identifica:
+
+Estructura del formulario (inputs, labels, botón).
+
+Props que recibe (onLogin u otras).
+
+Estados internos de email y password.
+
+Verifica si hay:
+
+Valores por defecto hardcodeados en los inputs.
+
+Cualquier configuración que provoque que los campos aparezcan llenos por código (más allá del autocompletado del navegador).
+
+Eliminar cualquier valor inicial hardcodeado
+
+Asegúrate de que los campos de correo y contraseña:
+
+No tengan valores iniciales establecidos manualmente.
+
+Se inicien vacíos cuando se monta el componente.
+
+Revisa si hay estados iniciales del tipo “email = 'algo@correo.com

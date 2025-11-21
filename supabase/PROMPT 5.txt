@@ -1,0 +1,156 @@
+Rol
+
+Eres TRAE, un asistente de programación especializado en integrar servicios externos dentro de aplicaciones React + TypeScript. Tu tarea es conectar el login futurista existente con Supabase Auth REAL, reemplazando completamente el sistema de autenticación local. Debes crear archivos necesarios, modificar componentes afectados y dejar el proyecto funcionando con sesiones persistentes, logout real, manejo de errores y estados de carga. NO debes alterar el estilo visual ya implementado, solo la lógica interna.
+
+
+Contexto
+
+Este proyecto ya tiene:
+- Un login futurista completamente estilizado.
+- Un POS completo y funcional con estética moderna.
+- Un flujo local de autenticación usando isAuthenticated y userEmail.
+- La base de datos y usuarios creados manualmente en Supabase.
+- Tablas del backend listas (users, products, sales_header, sales_detail, cash_movements).
+
+Ahora se necesita migrar todo a Supabase Auth para que:
+- El login se valide contra auth.users de Supabase.
+- El POS funcione solo con usuarios reales.
+- El email en la barra superior sea el del usuario logueado.
+- Las sesiones se guarden en el storage y no se pierdan al recargar la página.
+- El logout cierre sesión REAL en Supabase.
+- Se manejen errores de login: usuario no existe, contraseña incorrecta, etc.
+
+
+Tarea Principal
+
+Integrar Supabase Auth real en el login futurista, reemplazando por completo la autenticación simulada. Esto implica:
+
+1. Crear el archivo supabaseClient.ts.
+2. Usar supabase.auth.signInWithPassword() en el login.
+3. Controlar sesiones reales con onAuthStateChange.
+4. Sustituir isAuthenticated y userEmail por la sesión de Supabase.
+5. Manejar errores visibles en el login (credenciales inválidas).
+6. Implementar logout real con supabase.auth.signOut().
+7. Persistir la sesión en React aunque el usuario recargue la página.
+8. Refactorizar App.tsx para basarse en la sesión de Supabase en lugar de estado local.
+
+
+Qué debes hacer (detallado)
+
+1. Crear src/supabaseClient.ts
+Debe:
+- Importar createClient desde @supabase/supabase-js.
+- Usar los valores de .env:
+  VITE_SUPABASE_URL
+  VITE_SUPABASE_ANON_KEY
+- Exportar supabase.
+No agregar ninguna lógica adicional aquí.
+
+
+2. Actualizar el componente Login
+Debe seguir funcionando igual visualmente, pero su lógica cambia:
+
+- Reemplazar la lógica interna de validación local por una llamada a:
+  supabase.auth.signInWithPassword({ email, password })
+
+- Si el login falla:
+  Mostrar un mensaje de error en el UI (texto pequeño en rojo suave).
+  NO navegar al POS.
+
+- Si el login es exitoso:
+  No cambiar pantalla aquí; el cambio lo controla App.tsx.
+
+Debe mantener:
+- Inputs vacíos por defecto.
+- Placeholder futurista.
+- UI intacta.
+
+
+3. Reemplazar isAuthenticated y userEmail en App.tsx
+Eliminar:
+- Estados locales como isAuthenticated
+- Estados manuales como userEmail
+- Funciones handleLogin y handleLogout
+
+Ahora App.tsx debe escuchar la sesión real:
+
+  const [session, setSession] = useState<Session | null>(null);
+
+Obtener sesión inicial:
+  supabase.auth.getSession()
+
+Escuchar cambios:
+  supabase.auth.onAuthStateChange((_event, session) => setSession(session))
+
+Render:
+- Si session === null → mostrar <Login />
+- Si session !== null → mostrar header + <PosScreen />
+  con email obtenido de session.user.email
+
+
+4. Implementar logout real
+El botón “Cerrar sesión” debe ejecutar:
+
+  supabase.auth.signOut()
+
+Esto borra la sesión y regresa al Login automáticamente.
+
+
+5. Manejo de errores de login
+Cuando:
+- Contraseña incorrecta
+- Usuario no existe
+- Usuario deshabilitado
+
+Debes:
+- Mostrar mensaje de error dentro del Login
+  (“Credenciales incorrectas. Intenta nuevamente.”)
+- Mantener estilo futurista.
+
+
+6. Persistencia de sesión
+La aplicación debe:
+- Recuperar la sesión al recargar la página via supabase.auth.getSession()
+- Si la sesión existe, mostrar el POS inmediatamente
+- Evitar parpadeos o logout inesperado
+
+
+7. Validación final
+El comportamiento final debe ser:
+
+- Si email y contraseña son correctos → entra al POS.
+- Si son incorrectos → error elegante.
+- Si se recarga la página → sigue logueado.
+- Si se cierra sesión → vuelve al login.
+- La UI futurista se mantiene intacta.
+
+
+Documentación requerida (.txt)
+
+Crear:
+
+docs/trae_supabase_auth_integration_log.txt
+
+Debe incluir:
+1. Fecha y hora de ejecución
+2. Archivos modificados y creados
+3. Explicación de cómo funciona la sesión real
+4. Qué funciones de Supabase se usan
+5. Manejo de errores implementado
+6. Problemas encontrados y soluciones
+7. Confirmación de que el login ahora es Supabase Auth real
+
+
+Resultado esperado
+
+Al finalizar este prompt, la aplicación tendrá:
+- Login futurista con autenticación real contra Supabase.
+- Sesiones persistentes.
+- Logout real.
+- Email del usuario real en el header.
+- Base lista para:
+  fetch de productos desde Supabase,
+  registrar ventas,
+  registrar movimientos,
+  activar RLS,
+  roles admin/cajero.
